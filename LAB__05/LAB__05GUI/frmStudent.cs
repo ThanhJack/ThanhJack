@@ -90,6 +90,12 @@ namespace LAB__05GUI
                 MessageBox.Show(ex.Message);
             }
         }
+        private bool chooseAddorUp()
+        {
+            if (txtIdsv.TextLength > 9 && KiemTraIDExist(txtIdsv.Text)==1)
+                return false;
+            return true;
+        }
         private bool KTDataInput()
         {
             if (txtIdsv.Text == "" | txtName.Text == "" | txtAverageScore.Text == "")
@@ -111,7 +117,7 @@ namespace LAB__05GUI
             {
                 if (gvListSV.Rows[i].Cells[0].Value != null)
                     if (gvListSV.Rows[i].Cells[0].Value.ToString() == idadd)
-                        return i;
+                        return 1;
             }
             return -1;
         }
@@ -128,24 +134,42 @@ namespace LAB__05GUI
 
         private void btnAddorUpdate_Click(object sender, EventArgs e)
         {
-
-            if (KTDataInput())
-                if (KiemTraIDExist(txtIdsv.Text) == -1)
-                {
-                    Student newStudent = new Student();
-                    newStudent.StudentID = txtIdsv.Text;
-                    newStudent.FullName = txtName.Text;
-                    newStudent.AverageScore = float.Parse(txtAverageScore.Text);
-                    newStudent.FacultyID = Convert.ToInt32(cbbFaculty.SelectedValue.ToString());
-                    contextDB.Students.AddOrUpdate(newStudent);
-                    contextDB.SaveChanges();
-                    StartForm();
-                    LoadGV();
-                    MessageBox.Show($"thêm sinh viên {newStudent.FullName} vào danh sách thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show($" sinh viên có{txtIdsv.Text} đã tồn tại !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (chooseAddorUp())
+            {
+                if (KTDataInput())
+                    if (KiemTraIDExist(txtIdsv.Text) == -1)
+                    {
+                        Student newStudent = new Student();
+                        newStudent.StudentID = txtIdsv.Text;
+                        newStudent.FullName = txtName.Text;
+                        newStudent.AverageScore = float.Parse(txtAverageScore.Text);
+                        newStudent.FacultyID = Convert.ToInt32(cbbFaculty.SelectedValue.ToString());
+                        contextDB.Students.AddOrUpdate(newStudent);
+                        contextDB.SaveChanges();
+                        StartForm();
+                        LoadGV();
+                        MessageBox.Show($"thêm sinh viên {newStudent.FullName} vào danh sách thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+            }
+            else
+            {
+                   DialogResult result = MessageBox.Show($" Sinh viên có{txtIdsv.Text} đã tồn tại ! Bạn có muốn sửa ko ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                        if (KiemTraIDExist(txtIdsv.Text) == 1)
+                        {
+                            Student studentToUpdate = contextDB.Students.FirstOrDefault(p => p.StudentID == txtIdsv.Text);
+                            if (studentToUpdate != null)
+                            {
+                                studentToUpdate.FullName = txtName.Text;
+                                studentToUpdate.AverageScore = float.Parse(txtAverageScore.Text);
+                                studentToUpdate.FacultyID = Convert.ToInt32(cbbFaculty.SelectedValue.ToString());
+                                contextDB.Students.AddOrUpdate(studentToUpdate);
+                                contextDB.SaveChanges();
+                                StartForm();
+                                LoadGV();
+                                MessageBox.Show($"chỉnh sửa dữ liệu  sinh viên {studentToUpdate.FullName}  thành công !", "Thông báo", MessageBoxButtons.OK);
+                            }
+                        }
                 }
         }
 
