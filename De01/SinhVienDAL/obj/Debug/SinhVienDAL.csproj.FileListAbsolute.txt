@@ -1,0 +1,12 @@
+D:\C#\De01\SinhVienDAL\bin\Debug\SinhVienDAL.dll.config
+D:\C#\De01\SinhVienDAL\bin\Debug\SinhVienDAL.dll
+D:\C#\De01\SinhVienDAL\bin\Debug\SinhVienDAL.pdb
+D:\C#\De01\SinhVienDAL\bin\Debug\EntityFramework.dll
+D:\C#\De01\SinhVienDAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\C#\De01\SinhVienDAL\bin\Debug\EntityFramework.xml
+D:\C#\De01\SinhVienDAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\C#\De01\SinhVienDAL\obj\Debug\SinhVienDAL.csproj.AssemblyReference.cache
+D:\C#\De01\SinhVienDAL\obj\Debug\SinhVienDAL.csproj.CoreCompileInputs.cache
+D:\C#\De01\SinhVienDAL\obj\Debug\SinhVienDAL.csproj.CopyComplete
+D:\C#\De01\SinhVienDAL\obj\Debug\SinhVienDAL.dll
+D:\C#\De01\SinhVienDAL\obj\Debug\SinhVienDAL.pdb

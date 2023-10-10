@@ -1,0 +1,15 @@
+D:\C#\De01\SinhVien.BUS\obj\Debug\SinhVien.BUS.csproj.AssemblyReference.cache
+D:\C#\De01\SinhVien.BUS\obj\Debug\SinhVien.BUS.csproj.CoreCompileInputs.cache
+D:\C#\De01\SinhVien.BUS\bin\Debug\SinhVien.BUS.dll.config
+D:\C#\De01\SinhVien.BUS\bin\Debug\SinhVien.BUS.dll
+D:\C#\De01\SinhVien.BUS\bin\Debug\SinhVien.BUS.pdb
+D:\C#\De01\SinhVien.BUS\bin\Debug\EntityFramework.dll
+D:\C#\De01\SinhVien.BUS\bin\Debug\EntityFramework.SqlServer.dll
+D:\C#\De01\SinhVien.BUS\bin\Debug\EntityFramework.xml
+D:\C#\De01\SinhVien.BUS\bin\Debug\EntityFramework.SqlServer.xml
+D:\C#\De01\SinhVien.BUS\obj\Debug\SinhVien.BUS.csproj.CopyComplete
+D:\C#\De01\SinhVien.BUS\obj\Debug\SinhVien.BUS.dll
+D:\C#\De01\SinhVien.BUS\obj\Debug\SinhVien.BUS.pdb
+D:\C#\De01\SinhVien.BUS\bin\Debug\SinhVienDAL.dll
+D:\C#\De01\SinhVien.BUS\bin\Debug\SinhVienDAL.pdb
+D:\C#\De01\SinhVien.BUS\bin\Debug\SinhVienDAL.dll.config
