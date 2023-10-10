@@ -36,16 +36,20 @@
             this.txtMaSV = new System.Windows.Forms.TextBox();
             this.txtHotenSV = new System.Windows.Forms.TextBox();
             this.cboLop = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtFind = new System.Windows.Forms.TextBox();
             this.btThem = new System.Windows.Forms.Button();
-            this.btnFind = new System.Windows.Forms.Button();
             this.btXoa = new System.Windows.Forms.Button();
             this.btSua = new System.Windows.Forms.Button();
             this.btLuu = new System.Windows.Forms.Button();
             this.btKhong = new System.Windows.Forms.Button();
             this.btThoat = new System.Windows.Forms.Button();
             this.lvSinhvien = new System.Windows.Forms.ListView();
+            this.colMaSV = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colBirthday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colLop = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dtNgaysinh = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -120,12 +124,13 @@
             this.cboLop.Size = new System.Drawing.Size(169, 24);
             this.cboLop.TabIndex = 2;
             // 
-            // textBox3
+            // txtFind
             // 
-            this.textBox3.Location = new System.Drawing.Point(24, 178);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(169, 22);
-            this.textBox3.TabIndex = 1;
+            this.txtFind.Location = new System.Drawing.Point(24, 178);
+            this.txtFind.Name = "txtFind";
+            this.txtFind.Size = new System.Drawing.Size(169, 22);
+            this.txtFind.TabIndex = 1;
+            this.txtFind.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // btThem
             // 
@@ -139,17 +144,6 @@
             this.btThem.UseVisualStyleBackColor = false;
             this.btThem.Click += new System.EventHandler(this.btThem_Click);
             // 
-            // btnFind
-            // 
-            this.btnFind.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.btnFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFind.Location = new System.Drawing.Point(210, 177);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(75, 34);
-            this.btnFind.TabIndex = 4;
-            this.btnFind.Text = "Tìm";
-            this.btnFind.UseVisualStyleBackColor = false;
-            // 
             // btXoa
             // 
             this.btXoa.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -160,6 +154,7 @@
             this.btXoa.TabIndex = 3;
             this.btXoa.Text = "Xóa";
             this.btXoa.UseVisualStyleBackColor = false;
+            this.btXoa.Click += new System.EventHandler(this.btXoa_Click);
             // 
             // btSua
             // 
@@ -171,6 +166,7 @@
             this.btSua.TabIndex = 3;
             this.btSua.Text = "Sửa";
             this.btSua.UseVisualStyleBackColor = false;
+            this.btSua.Click += new System.EventHandler(this.btSua_Click);
             // 
             // btLuu
             // 
@@ -204,12 +200,19 @@
             this.btThoat.TabIndex = 3;
             this.btThoat.Text = "Thoát";
             this.btThoat.UseVisualStyleBackColor = false;
+            this.btThoat.Click += new System.EventHandler(this.btThoat_Click);
             // 
             // lvSinhvien
             // 
             this.lvSinhvien.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvSinhvien.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colMaSV,
+            this.colName,
+            this.colBirthday,
+            this.colLop});
+            this.lvSinhvien.FullRowSelect = true;
             this.lvSinhvien.HideSelection = false;
             this.lvSinhvien.Location = new System.Drawing.Point(89, 214);
             this.lvSinhvien.Name = "lvSinhvien";
@@ -217,6 +220,27 @@
             this.lvSinhvien.TabIndex = 5;
             this.lvSinhvien.UseCompatibleStateImageBehavior = false;
             this.lvSinhvien.View = System.Windows.Forms.View.Details;
+            this.lvSinhvien.SelectedIndexChanged += new System.EventHandler(this.lvSinhvien_SelectedIndexChanged);
+            // 
+            // colMaSV
+            // 
+            this.colMaSV.Text = "Mã SV";
+            this.colMaSV.Width = 100;
+            // 
+            // colName
+            // 
+            this.colName.Text = "Họ và Tên";
+            this.colName.Width = 150;
+            // 
+            // colBirthday
+            // 
+            this.colBirthday.Text = "Ngày sinh";
+            this.colBirthday.Width = 200;
+            // 
+            // colLop
+            // 
+            this.colLop.Text = "Lớp";
+            this.colLop.Width = 100;
             // 
             // dtNgaysinh
             // 
@@ -225,14 +249,24 @@
             this.dtNgaysinh.Size = new System.Drawing.Size(255, 22);
             this.dtNgaysinh.TabIndex = 6;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(209, 174);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(45, 25);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Tìm";
+            // 
             // frmSinhvien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(997, 450);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.dtNgaysinh);
             this.Controls.Add(this.lvSinhvien);
-            this.Controls.Add(this.btnFind);
             this.Controls.Add(this.btThoat);
             this.Controls.Add(this.btKhong);
             this.Controls.Add(this.btLuu);
@@ -241,7 +275,7 @@
             this.Controls.Add(this.btThem);
             this.Controls.Add(this.cboLop);
             this.Controls.Add(this.txtHotenSV);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtFind);
             this.Controls.Add(this.txtMaSV);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -266,9 +300,8 @@
         private System.Windows.Forms.TextBox txtMaSV;
         private System.Windows.Forms.TextBox txtHotenSV;
         private System.Windows.Forms.ComboBox cboLop;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtFind;
         private System.Windows.Forms.Button btThem;
-        private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.Button btXoa;
         private System.Windows.Forms.Button btSua;
         private System.Windows.Forms.Button btLuu;
@@ -276,6 +309,11 @@
         private System.Windows.Forms.Button btThoat;
         private System.Windows.Forms.ListView lvSinhvien;
         private System.Windows.Forms.DateTimePicker dtNgaysinh;
+        public System.Windows.Forms.ColumnHeader colBirthday;
+        public System.Windows.Forms.ColumnHeader colMaSV;
+        public System.Windows.Forms.ColumnHeader colName;
+        public System.Windows.Forms.ColumnHeader colLop;
+        private System.Windows.Forms.Label label6;
     }
 }
 
